@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 
 @Controller
-@RequestMapping("admin")
+@RequestMapping("login")
 public class AdminController {
 
     @Resource
