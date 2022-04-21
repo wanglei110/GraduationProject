@@ -70,6 +70,8 @@ public class TokenInterceptor implements HandlerInterceptor {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("status", "403");
         jsonObject.put("message", "没有访问权限");
+        jsonObject.put("data", "fail");
+        jsonObject.put("time",LocalDateTime.now());
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
         response.getOutputStream().write(jsonObject.toString().getBytes(StandardCharsets.UTF_8));

@@ -5,9 +5,9 @@ import com.wang.graduationproject.To.LoginTo;
 
 public interface LoginService {
 
-    public LoginResultTo login(LoginTo loginTo);
+    LoginResultTo login(LoginTo loginTo);
 
-    public void logout(long userId);
+    Boolean logout(long userId);
 
-    public void test();
+    void test();
 }

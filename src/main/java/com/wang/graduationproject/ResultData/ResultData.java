@@ -37,6 +37,7 @@ public class ResultData<T> {
         ResultData<T> resultData = new ResultData<>();
         resultData.setStatus(code);
         resultData.setMessage(message);
+        resultData.setData((T) "fail");
         return resultData;
     }
 

@@ -16,7 +16,7 @@ public class User {
     private Long id;
 
     @Column(name="if_deleted")
-    private Boolean ifDeleted=false;
+    private Boolean ifDeleted;
 
     @Column(name="create_time")
     private LocalDateTime createTime=LocalDateTime.now();

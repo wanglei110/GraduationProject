@@ -1,11 +1,10 @@
 package com.wang.graduationproject.Controller;
 
 import com.wang.graduationproject.Annotation.PassToken;
+import com.wang.graduationproject.Pagination.PaginationResult;
 import com.wang.graduationproject.Service.LoginService;
 import com.wang.graduationproject.Service.UserService;
-import com.wang.graduationproject.To.LoginResultTo;
-import com.wang.graduationproject.To.LoginTo;
-import com.wang.graduationproject.To.UserTo;
+import com.wang.graduationproject.To.*;
 import com.wang.graduationproject.Utils.SM2Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +21,22 @@ public class UserController {
     @PassToken
     @PostMapping("sign")
     @ResponseBody
-    public void sign(@RequestBody UserTo userTo){
-        userService.sign(userTo);
-        return ;
+    public Boolean sign(@RequestBody UserTo userTo){
+        return userService.sign(userTo);
+    }
+
+    @PassToken
+    @PostMapping("edit_pwd")
+    @ResponseBody
+    public Boolean editPwd(@RequestBody EditPwdTo editPwdTo){
+        return userService.editPwd(editPwdTo);
+    }
+
+    @PassToken
+    @PostMapping("query_user")
+    @ResponseBody
+    public PaginationResult queryUser(@RequestBody QueryUserTo queryUserTo){
+        return userService.queryUserList(queryUserTo);
     }
 
     @PassToken

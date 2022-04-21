@@ -14,7 +14,6 @@ public class Token {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Column(name="create_time")
     private LocalDateTime createTime;
 

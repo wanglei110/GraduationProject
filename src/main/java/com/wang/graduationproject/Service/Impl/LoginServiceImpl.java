@@ -20,7 +20,9 @@ import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-
+/**
+ * @author wanglei
+ * */
 @Service
 @Transactional
 public class LoginServiceImpl implements LoginService {
@@ -38,8 +40,10 @@ public class LoginServiceImpl implements LoginService {
         if(loginTo.getPwd().equalsIgnoreCase("123456")){
             loginTo.setPwd(SM2Utils.encrypt("123456"));
         }
-        String MD5Pwd=SM2Utils.decrypt(loginTo.getPwd());//解密获得密码的32位小写MD5值
-        String SM4Pwd= SM4Utils.SM4Encrypt(MD5Pwd);//将密码的MD5值用SM4加密
+        //解密获得密码的32位小写MD5值
+        String MD5Pwd=SM2Utils.decrypt(loginTo.getPwd());
+        //将密码的MD5值用SM4加密
+        String SM4Pwd= SM4Utils.SM4Encrypt(MD5Pwd);
         User user=userRepository.findUserByUserNameAndPwdAndIfDeletedFalse(loginTo.getUserName(),SM4Pwd);
         if(ObjectUtils.isEmpty(user)){
             throw new RuntimeException("用户名或密码错误！");
@@ -51,8 +55,13 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public void logout(long userId) {
+    public Boolean logout(long userId) {
+        User user=userRepository.findUserByIdAndIfDeletedFalse(userId);
+        if(ObjectUtils.isEmpty(user)){
+            throw new RuntimeException("该用户不存在!");
+        }
         tokenRepository.deleteAllByUserId(userId);
+        return true;
     }
 
     @Override
@@ -60,6 +69,9 @@ public class LoginServiceImpl implements LoginService {
         return;
     }
 
+    /**
+     * 创建token并保存到数据库
+     * */
     public String createToken(long id){
         Token token=new Token();
         token.setToken(JwtUtils.createToken(String.valueOf(id)));
