@@ -2,6 +2,7 @@ package com.wang.graduationproject.Service.Impl;
 
 import com.wang.graduationproject.Dao.Token;
 import com.wang.graduationproject.Dao.User;
+import com.wang.graduationproject.Enum.RoleEnum;
 import com.wang.graduationproject.Repository.TokenRepository;
 import com.wang.graduationproject.Repository.UserRepository;
 import com.wang.graduationproject.Service.AdminService;
@@ -41,6 +42,8 @@ public class AdminServiceImpl implements AdminService {
         String SM4Pwd=SM4Utils.SM4Encrypt(userTo.getPwd());
         user.setPwd(SM4Pwd);
         user.setEnable(true);
+        user.setIfDeleted(false);
+        user.setRole(RoleEnum.catchMessage(userTo.getRole()).getRole());
         userRepository.saveAndFlush(user);
         return true;
     }

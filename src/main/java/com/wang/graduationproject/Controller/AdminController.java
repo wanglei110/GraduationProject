@@ -1,11 +1,8 @@
 package com.wang.graduationproject.Controller;
 
 import com.wang.graduationproject.Annotation.PassToken;
-import com.wang.graduationproject.Service.LoginService;
-import com.wang.graduationproject.To.LoginResultTo;
-import com.wang.graduationproject.To.LoginTo;
+import com.wang.graduationproject.Service.AdminService;
 import com.wang.graduationproject.To.UserTo;
-import com.wang.graduationproject.Utils.SM2Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,20 +16,23 @@ import javax.annotation.Resource;
 public class AdminController {
 
     @Resource
-    LoginService loginService;
+    AdminService adminService;
 
     @PassToken
-    @GetMapping("login")
+    @GetMapping("add_user")
     @ResponseBody
-    public LoginResultTo login(@RequestBody LoginTo loginTo){
-        return loginService.login(loginTo);
+    public Boolean addUser(@RequestBody UserTo userTo){
+        return adminService.addUser(userTo);
     }
 
     @PassToken
-    @GetMapping("logout")
+    @GetMapping("audit_sign")
     @ResponseBody
-    public Boolean getPublicKey(@RequestBody UserTo userTo){
-        return loginService.logout(userTo.getId());
+    public Boolean auditSign(@RequestBody UserTo userTo){
+
+        return adminService.auditSign(userTo);
     }
+
+
 
 }

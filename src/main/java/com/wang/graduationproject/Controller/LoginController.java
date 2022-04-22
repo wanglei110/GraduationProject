@@ -40,7 +40,6 @@ public class LoginController {
 
     @GetMapping("test")
     @ResponseBody
-    public void test(){
-        loginService.test();
+    public String test(){ return "https测试";
     }
 }
