@@ -1,6 +1,7 @@
 package com.wang.graduationproject.Dao;
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -87,6 +88,7 @@ public class Course {
     private User user;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinTable(
             name="course_ideological_elements",
             joinColumns = @JoinColumn(name="course_id",referencedColumnName = "id"),

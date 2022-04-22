@@ -16,9 +16,9 @@ public class QueryIdeoTo {
      * */
     private String content;
 
-    private String userName;
+    private String creator;
     /**
      * 是否开启or查询
      */
-    private Boolean Or;
+    private Boolean or;
 }

@@ -2,7 +2,7 @@ package com.wang.graduationproject.To;
 
 
 import lombok.Data;
-import java.time.LocalDateTime;
+
 
 @Data
 
@@ -10,7 +10,7 @@ public class IdeologicalElementsTo {
 
 
     private Long id;
-    private LocalDateTime createTime;
+    private String createTime;
 
     /**
      *知识点
@@ -21,7 +21,8 @@ public class IdeologicalElementsTo {
      *内容
      * */
     private String content;
-    private Long userId;
+
+    private UserTo userTo;
 
 
 

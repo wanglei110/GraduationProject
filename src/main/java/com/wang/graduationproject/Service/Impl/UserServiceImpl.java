@@ -142,7 +142,8 @@ public class UserServiceImpl implements UserService {
     /**
      * 将User转成UserTO
      * */
-    private UserTo getUserTo(User user){
+    @Override
+    public UserTo getUserTo(User user){
         UserTo userTo=new UserTo();
         userTo.setUserName(user.getUserName());
         userTo.setAcademy(user.getAcademy());

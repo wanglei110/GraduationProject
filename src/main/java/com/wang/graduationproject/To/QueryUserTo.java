@@ -12,5 +12,5 @@ public class QueryUserTo {
     /**
      * 是否开启or查询
      */
-    private Boolean Or;
+    private Boolean or;
 }

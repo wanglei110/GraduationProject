@@ -1,5 +1,6 @@
 package com.wang.graduationproject.Service;
 
+import com.wang.graduationproject.Dao.User;
 import com.wang.graduationproject.Pagination.PaginationResult;
 import com.wang.graduationproject.To.EditPwdTo;
 import com.wang.graduationproject.To.QueryUserTo;
@@ -14,4 +15,6 @@ public interface UserService {
     boolean editUser(UserTo userTo);
 
     PaginationResult queryUserList(QueryUserTo queryUserTo);
+
+    UserTo getUserTo(User user);
 }
